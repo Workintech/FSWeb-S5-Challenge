@@ -1,4 +1,26 @@
 const Header = (baslik, tarih, yazi) => {
+  
+  let headerDiv = document.createElement("div");
+  headerDiv.classList.add("header");
+
+  let dateSpan = document.createElement("span");
+  dateSpan.classList.add("date");
+  dateSpan.textContent = tarih;
+
+  let h1 = document.createElement("h1");
+  h1.textContent = baslik;
+
+  let tempSpan = document.createElement("span");
+  tempSpan.classList.add("temp");
+  tempSpan.textContent = yazi;
+
+  headerDiv.append(dateSpan);
+  headerDiv.append(h1);
+  headerDiv.append(tempSpan);
+
+  return headerDiv;
+
+  
   // GÖREV 1
   // ---------------------
   // Bu fonksiyon argüman olarak `baslik`, `tarih` ve `temp` alarak aşağıdaki yapıyı döndürecek.
@@ -14,6 +36,19 @@ const Header = (baslik, tarih, yazi) => {
 }
 
 const headerEkleyici = (secici) => {
+
+  let selector = document.querySelector(secici);
+
+  const header = Header(
+    "Teknoloji Zamanı",
+    "12 Ekim 2023",
+    "Teknoloji Güncesi" 
+  );
+
+  selector.append(header);
+
+  
+
   // GÖREV 2
   // ---------------------
   // Tek argümanı olarak bir css seçici alan bu fonksiyonu uygulayın.

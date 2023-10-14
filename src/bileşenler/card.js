@@ -19,7 +19,7 @@ const Card = (makale) => {
   authorImg.setAttribute("src", makale.yazarFoto);
 
   const authorNameSpan = document.createElement("span");
-  authorNameSpan.textContent = `${makale.yazarAdi} tarafından`;
+  authorNameSpan.textContent = makale.yazarAdi + " tarafından";
   
   imgContainerDiv.append(authorImg);
   authorDiv.append(imgContainerDiv);
@@ -61,10 +61,12 @@ const cardEkleyici = (secici) => {
   .get("http://localhost:5001/api/makaleler")
   .then(response => {
     const articles = response.data.makaleler;
-    articles.forEach((makale => {
-      const card = Card(makale);
-      selector.append(card);
-    }));
+    for (const key in articles) {
+      articles[key].forEach((makale) => {
+        const card = Card(makale);
+        selector.append(card);
+      });
+    };
   });
 
   // GÖREV 6
